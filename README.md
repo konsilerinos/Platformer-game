@@ -1,9 +1,12 @@
-# Игра в жанре платформер
+# Разработка игры в жанре платформер
 
-## А именно
+## Ресурсы
 
-Дополнение к [лабораторному практикуму](https://github.com/konsilerinos/Laboratory_work_on_software_design/blob/main/README.md) 
+1. [Лабораторный практикум](https://github.com/konsilerinos/Software-design-labs)
+2. [Техническое задание]()
 
-![В шише](https://user-images.githubusercontent.com/78896451/135717898-76b1bafe-8e82-4289-bf0d-9be18743f7a6.jpg)
+## -
 
-### Слессарев Николай, Лимонов Николай, Казак Евгений, Панин Никита, ПИН-32
+![изображение](https://user-images.githubusercontent.com/78896451/136550057-36174af1-6a29-43a0-a77d-b752278e7116.png)
+
+### ©️ Слесарев Николай, Лимонов Николай, Казак Евгений, Панин Никита, ПИН-32

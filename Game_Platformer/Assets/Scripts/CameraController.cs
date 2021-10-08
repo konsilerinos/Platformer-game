@@ -28,12 +28,12 @@ namespace UnityEngine
 
         public void move_left()
         {
-            camera.transform.position = new Vector3(camera.transform.position.x - 22f, 0, -10);
+            camera.transform.position = new Vector3(camera.transform.position.x - 40f, camera.transform.position.y, -10);
         }
 
         public void move_right()
         {
-            camera.transform.position = new Vector3(camera.transform.position.x + 22f, 0, -10);
+            camera.transform.position = new Vector3(camera.transform.position.x + 40f, camera.transform.position.y, -10);
         }
     }
 }
