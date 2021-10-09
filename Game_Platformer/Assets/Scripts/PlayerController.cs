@@ -1,82 +1,86 @@
+using UnityEngine;
+using System;
 
-
-namespace UnityEngine
+public class PlayerController : PlayerModel
 {
-    public class PlayerController : MonoBehaviour
+    private BoxCollider2D box_collider;
+    private SpriteRenderer spriterend;
+    [SerializeField]
+    private bool IsGrounded;
+    public float Jump_speed;
+    private GameObject temp;
+
+    private void Awake()
     {
-        public float speed;
-        private Rigidbody2D player;
-        private BoxCollider2D box_collider;
-        private Animation anim;
-        private SpriteRenderer spriterend;
-        [SerializeField]
-        private bool IsGrounded;
-        public float Jump_speed;
-        private GameObject temp;
-        private GameObject ground;
+        player = GetComponent<Rigidbody2D>();
+        box_collider = GetComponent<BoxCollider2D>();
+        spriterend = GetComponent<SpriteRenderer>();
+        speed = 10f;
+    }
 
-        private void Awake()
-        {
-            player = GetComponent<Rigidbody2D>();
-            box_collider = GetComponent<BoxCollider2D>();
-            spriterend = GetComponent<SpriteRenderer>();
-            ground = GameObject.Find("ground");
-            speed = 10f;
-        }
+    void Update()
+    {
+        Movement();
+    }
 
-        void Update()
+    void Movement()
+    {
+        if (IsGrounded)
         {
-            if(IsGrounded)
+            if (Input.GetKey(KeyCode.LeftShift)) speed = 20f;
+            else speed = 10f;
+            if (Input.GetKey(KeyCode.D) || Input.GetKey("right"))
             {
-                if (Input.GetKey(KeyCode.LeftShift)) speed = 20f;
-                else speed = 10f;
-                if (Input.GetKey(KeyCode.D) || Input.GetKey("right"))
-                {
-                    player.velocity = new Vector2(speed, player.velocity.y);
-                    spriterend.flipX = false;
-                }
-                else if (Input.GetKey(KeyCode.A) || Input.GetKey("left"))
-                {
-                    player.velocity = new Vector2(-speed, player.velocity.y);
-                    spriterend.flipX = true;
-                }
-                if ((Input.GetKey(KeyCode.W) || Input.GetKey("up") || Input.GetKey(KeyCode.Space)) && !spriterend.flipX)
-                {
-                    if (speed == 7f)
-                        player.velocity = new Vector2(5 * speed, Jump_speed);
-                    else
-                        player.velocity = new Vector2(2f * speed, Jump_speed);
-                    IsGrounded = false;
-                }
-                else if ((Input.GetKey(KeyCode.W) || Input.GetKey("up") || Input.GetKey(KeyCode.Space)) && spriterend.flipX)
-                {
-                    if (speed == 7f)
-                        player.velocity = new Vector2(-3 * speed, Jump_speed);
-                    else
-                        player.velocity = new Vector2(-speed, Jump_speed);
-                    IsGrounded = false;
-                }
+                player.velocity = new Vector2(speed, player.velocity.y);
+                spriterend.flipX = false;
             }
-            else if(!IsGrounded)
+            else if (Input.GetKey(KeyCode.A) || Input.GetKey("left"))
             {
-                if (!spriterend.flipX)
-                {
-                    player.velocity = new Vector2(2 * speed, player.velocity.y);
-                }
-                else if (spriterend.flipX)
-                {
-                    player.velocity = new Vector2(-2 * speed, player.velocity.y);
-                }
+                player.velocity = new Vector2(-speed, player.velocity.y);
+                spriterend.flipX = true;
             }
-            if (box_collider.IsTouching(ground.GetComponent<BoxCollider2D>()))
+            if ((Input.GetKey(KeyCode.W) || Input.GetKey("up") || Input.GetKey(KeyCode.Space)) && !spriterend.flipX)
             {
-                IsGrounded = true;
+                if (speed == 7f)
+                    player.velocity = new Vector2(5f * speed, Jump_speed);
+                else
+                    player.velocity = new Vector2(2f * speed, Jump_speed);
+                IsGrounded = false;
             }
-            else
+            else if ((Input.GetKey(KeyCode.W) || Input.GetKey("up") || Input.GetKey(KeyCode.Space)) && spriterend.flipX)
             {
+                if (speed == 7f)
+                    player.velocity = new Vector2(-5f * speed, Jump_speed);
+                else
+                    player.velocity = new Vector2(-2f * speed, Jump_speed);
                 IsGrounded = false;
             }
         }
+        else if (!IsGrounded)
+        {
+            if (!spriterend.flipX)
+            {
+                player.velocity = new Vector2(2 * speed, player.velocity.y);
+            }
+            else if (spriterend.flipX)
+            {
+                player.velocity = new Vector2(-2 * speed, player.velocity.y);
+            }
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        ContactPoint2D[] contacts = new ContactPoint2D[1];
+
+        collision.GetContacts(contacts);
+        var contactPoint = contacts[0].point;
+        if (contactPoint.normalized.y <= 0)
+            IsGrounded = true;
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        IsGrounded = false;
     }
 }
-

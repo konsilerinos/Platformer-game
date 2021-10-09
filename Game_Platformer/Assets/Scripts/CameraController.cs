@@ -24,6 +24,10 @@ namespace UnityEngine
                 move_right();
             else if (player.transform.position.x < min.x)
                 move_left();
+            if (player.transform.position.y > max.y)
+                move_up();
+            else if (player.transform.position.y < min.y)
+                move_down();
         }
 
         public void move_left()
@@ -34,6 +38,16 @@ namespace UnityEngine
         public void move_right()
         {
             camera.transform.position = new Vector3(camera.transform.position.x + 40f, camera.transform.position.y, -10);
+        }
+
+        public void move_up()
+        {
+            camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y + 18f, -10);
+        }
+
+        public void move_down()
+        {
+            camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y - 18f, -10);
         }
     }
 }
