@@ -18,7 +18,7 @@ public class EnemyController : MonoBehaviour
     {
         float distance = GameObject.Find("Player").transform.position.x - GetComponent<Transform>().position.x;
 
-        if (Math.Abs(distance) < 5f)
+        if (Math.Abs(distance) < 100f)
         {
             if(distance > 0)
             {

@@ -32,22 +32,22 @@ namespace UnityEngine
 
         public void move_left()
         {
-            camera.transform.position = new Vector3(camera.transform.position.x - 40f, camera.transform.position.y, -10);
+            camera.transform.position = new Vector3(camera.transform.position.x - 700f, camera.transform.position.y, camera.transform.position.z);
         }
 
         public void move_right()
         {
-            camera.transform.position = new Vector3(camera.transform.position.x + 40f, camera.transform.position.y, -10);
+            camera.transform.position = new Vector3(camera.transform.position.x + 700f, camera.transform.position.y, camera.transform.position.z);
         }
 
         public void move_up()
         {
-            camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y + 18f, -10);
+            camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y + 392f, camera.transform.position.z);
         }
 
         public void move_down()
         {
-            camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y - 18f, -10);
+            camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y - 392f, camera.transform.position.z);
         }
     }
 }
