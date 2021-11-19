@@ -24,16 +24,30 @@ namespace UnityEngine
                 move_right();
             else if (player.transform.position.x < min.x)
                 move_left();
+            if (player.transform.position.y > max.y)
+                move_up();
+            else if (player.transform.position.y < min.y)
+                move_down();
         }
 
         public void move_left()
         {
-            camera.transform.position = new Vector3(camera.transform.position.x - 22f, 0, -10);
+            camera.transform.position = new Vector3(camera.transform.position.x - 700f, camera.transform.position.y, camera.transform.position.z);
         }
 
         public void move_right()
         {
-            camera.transform.position = new Vector3(camera.transform.position.x + 22f, 0, -10);
+            camera.transform.position = new Vector3(camera.transform.position.x + 700f, camera.transform.position.y, camera.transform.position.z);
+        }
+
+        public void move_up()
+        {
+            camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y + 392f, camera.transform.position.z);
+        }
+
+        public void move_down()
+        {
+            camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y - 392f, camera.transform.position.z);
         }
     }
 }
