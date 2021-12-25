@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 38092563}
   - component: {fileID: 38092562}
+  - component: {fileID: 38092565}
   - component: {fileID: 38092561}
   - component: {fileID: 38092560}
   - component: {fileID: 38092564}
@@ -268,6 +269,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &38092565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38092559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84b1b288685fe1942a91df3c19dc59a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &812337934
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,6 +509,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1546942596}
   - component: {fileID: 1546942597}
+  - component: {fileID: 1546942598}
   - component: {fileID: 1546942595}
   - component: {fileID: 1546942594}
   m_Layer: 0
@@ -512,7 +526,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1546942593}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1546942595
 Camera:
   m_ObjectHideFlags: 0
@@ -582,6 +596,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e722967e9fed8e7438ae5bc2f405bfc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1546942598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1546942593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac171726064f9394bb05a49060ada550, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1660383276
 GameObject:
   m_ObjectHideFlags: 0
@@ -593,6 +619,7 @@ GameObject:
   - component: {fileID: 1660383278}
   - component: {fileID: 1660383280}
   - component: {fileID: 1660383282}
+  - component: {fileID: 1660383283}
   - component: {fileID: 1660383277}
   - component: {fileID: 1660383279}
   - component: {fileID: 1660383281}
@@ -747,3 +774,15 @@ MonoBehaviour:
   IsDead: 0
   speed: 0
   const_speed: 0
+--- !u!114 &1660383283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660383276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5697259ca9c5def4fb6fbadfa4530951, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
