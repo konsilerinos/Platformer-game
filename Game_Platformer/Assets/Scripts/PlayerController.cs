@@ -1,10 +1,13 @@
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : PlayerModel
 {
     private BoxCollider2D box_collider;
     private SpriteRenderer spriterend;
+    public Sprite idle;
+    public Sprite moving;
     [SerializeField]
     private bool IsGrounded;
     public float Jump_speed;
@@ -31,11 +34,13 @@ public class PlayerController : PlayerModel
         {
             player.velocity = new Vector2(speed, player.velocity.y);
             spriterend.flipX = false;
+            spriterend.sprite = moving;
         }
         else if (Input.GetKey(KeyCode.A) || Input.GetKey("left"))
         {
             player.velocity = new Vector2(-speed, player.velocity.y);
             spriterend.flipX = true;
+            spriterend.sprite = moving;
         }
         if (IsGrounded)
         {
@@ -56,6 +61,14 @@ public class PlayerController : PlayerModel
                 IsGrounded = false;
             }
         }
+        if(player.velocity.x == 0)
+        {
+            spriterend.sprite = idle;
+        }
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("MainMenu", LoadSceneMode.Additive);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -67,7 +80,7 @@ public class PlayerController : PlayerModel
         if (contactPoint.normalized.y <= 0)
             IsGrounded = true;
     }
-
+    
     private void OnCollisionExit2D(Collision2D collision)
     {
         IsGrounded = false;
